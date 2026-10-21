@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcard Study App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">✦</div>
+      <div>
+        <p class="eyebrow">STUDY SPACE</p>
+        <h1>Flashcards</h1>
+      </div>
+      <span class="saved-label"><span class="status-dot"></span> Saved on this device</span>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow">SMALL STEPS, BIG PROGRESS</p>
+        <h2>Learn at your own pace.</h2>
+        <p class="subtext">Review a card, reveal the answer, and keep moving forward.</p>
+      </div>
+      <button class="primary-btn" id="addBtn">＋ Add flashcard</button>
+    </section>
+
+    <section class="study-layout">
+      <div class="study-panel">
+        <div class="card-meta">
+          <span id="cardCounter">CARD 1 OF 5</span>
+          <span class="pill" id="cardCategory">General</span>
+        </div>
+
+        <article class="flashcard" id="flashcard" aria-live="polite">
+          <div class="card-symbol" id="cardSymbol">Q</div>
+          <p class="eyebrow" id="sideLabel">QUESTION</p>
+          <h3 id="cardText">What does HTML stand for?</h3>
+          <p class="tap-hint" id="tapHint">Think of your answer, then reveal the card.</p>
+        </article>
+
+        <button class="reveal-btn" id="showAnswerBtn">Show Answer <span aria-hidden="true">↗</span></button>
+
+        <div class="navigation">
+          <button class="secondary-btn" id="prevBtn">← Previous</button>
+          <div class="dots" id="progressDots" aria-label="Card progress"></div>
+          <button class="secondary-btn" id="nextBtn">Next →</button>
+        </div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="side-heading">
+          <div>
+            <p class="eyebrow">YOUR DECK</p>
+            <h3>Study cards</h3>
+          </div>
+          <span class="count-badge" id="deckCount">5</span>
+        </div>
+        <p class="side-description">Choose a card to study, or customize your deck.</p>
+        <div class="deck-list" id="deckList"></div>
+        <div class="side-actions">
+          <button class="edit-btn" id="editBtn">✎ Edit current</button>
+          <button class="delete-btn" id="deleteBtn">Delete</button>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <span>✦</span> Made for curious minds <span class="footer-divider">·</span> Your cards stay in this browser
+    </footer>
+  </main>
+
+  <dialog id="cardDialog">
+    <form id="cardForm" method="dialog">
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow" id="dialogEyebrow">MAKE IT YOURS</p>
+          <h2 id="dialogTitle">Add a flashcard</h2>
+        </div>
+        <button type="button" class="close-btn" id="closeDialogBtn" aria-label="Close">×</button>
+      </div>
+      <label for="questionInput">Question</label>
+      <textarea id="questionInput" rows="3" maxlength="300" placeholder="Write a question..." required></textarea>
+      <label for="answerInput">Answer</label>
+      <textarea id="answerInput" rows="4" maxlength="500" placeholder="Write the answer..." required></textarea>
+      <label for="categoryInput">Category <span class="optional">(optional)</span></label>
+      <input id="categoryInput" maxlength="40" placeholder="e.g. Computer Science" />
+      <p class="form-error" id="formError" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="secondary-btn" id="cancelBtn">Cancel</button>
+        <button type="submit" class="primary-btn" id="saveCardBtn">Save flashcard</button>
+      </div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
